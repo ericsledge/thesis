@@ -1,0 +1,22 @@
+//Capture video from the camera:
+import cv2
+cap = cv2.VideoCapture(0)
+
+//Use CVZone to detect face:
+import cvzone
+from cvzone import FaceDetectionModule
+face_detector = FaceDetectionModule.FaceDetector()
+
+while True:
+    success, img = cap.read()
+    img, list_faces = face_detector.findFaces(img)
+    cv2.imshow("Face Detection", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+//release the video capture object and close any OpenCV windows.
+# Release the video capture object
+cap.release()
+
+# Close all OpenCV windows
+cv2.destroyAllWindows()
+
