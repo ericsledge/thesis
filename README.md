@@ -21,13 +21,13 @@ Instructions to set up the project environment:
 
 githubname: ericsledge
 
-REQUIREMENTS
+## REQUIREMENTS
 Raspberry Pi: Ensure it’s running Raspbian OS.
 Camera: You can opt for the Raspberry Pi’s native camera module or a compatible USB webcam.
 Libraries: CVZone and OpenCV are the mainstays for our computer vision tasks.
 Python: Version 3.6 or later is recommended for compatibility and performance.
 
-INSTALLATION STEPS
+## INSTALLATION STEPS
 Setting up your Raspberry Pi:
 Begin with a Raspberry Pi with Raspbian OS already installed.
 Connect your chosen camera module or USB webcam to the Raspberry Pi. Ensure that it’s compatible and properly detected by the system.
@@ -42,3 +42,23 @@ Install CVZone:
 With OpenCV in place, you can now proceed to install CVZone:
 
 pip3 install cvzone
+
+## FACE DETECTION
+
+Capture video from the camera:
+
+import cv2
+cap = cv2.VideoCapture(0)
+
+Use CVZone to detect face:
+
+import cvzone
+from cvzone import FaceDetectionModule
+face_detector = FaceDetectionModule.FaceDetector()
+
+while True:
+    success, img = cap.read()
+    img, list_faces = face_detector.findFaces(img)
+    cv2.imshow("Face Detection", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
