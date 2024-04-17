@@ -20,3 +20,25 @@ This study employs a mixed-methods approach, integrating both qualitative interv
 Instructions to set up the project environment:
 
 githubname: ericsledge
+
+REQUIREMENTS
+Raspberry Pi: Ensure it’s running Raspbian OS.
+Camera: You can opt for the Raspberry Pi’s native camera module or a compatible USB webcam.
+Libraries: CVZone and OpenCV are the mainstays for our computer vision tasks.
+Python: Version 3.6 or later is recommended for compatibility and performance.
+
+INSTALLATION STEPS
+Setting up your Raspberry Pi:
+Begin with a Raspberry Pi with Raspbian OS already installed.
+Connect your chosen camera module or USB webcam to the Raspberry Pi. Ensure that it’s compatible and properly detected by the system.
+Install OpenCV:
+
+OpenCV is a foundational library for computer vision. Install it using the following commands:
+
+sudo apt-get update
+sudo apt-get install libopencv-dev python3-opencv
+Install CVZone:
+
+With OpenCV in place, you can now proceed to install CVZone:
+
+pip3 install cvzone
