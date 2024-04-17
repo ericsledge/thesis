@@ -1,0 +1,35 @@
+//Basic Text Annotation:
+from cvzone.Utils import putText
+img = putText(img, "Detected Posture", [50, 50])
+
+//Displaying Dynamic Data:
+angle, img = detector.findAngle(lmList[11][0:2], lmList[13][0:2], lmList[15][0:2], img=img)
+img = putText(img, f"Angle: {angle:.2f}°", [50, 80])
+
+//Enhanced Visulization
+from cvzone.PoseModule import PoseDetector
+from cvzone.Utils import putText
+import cv2
+
+cap = cv2.VideoCapture(0)
+detector = PoseDetector()
+
+while True:
+    success, img = cap.read()
+    img = detector.findPose(img)
+    lmList, _ = detector.findPosition(img, draw=False)
+
+    if lmList:
+        angle, img = detector.findAngle(lmList[11][0:2], lmList[13][0:2], lmList[15][0:2], img=img)
+        img = putText(img, f"Angle: {angle:.2f}°", [50, 80], fontSize=1, color=(255, 0, 255))
+
+        # Check posture and provide real-time feedback
+        if angle > 50:
+            feedback = "Poor Posture!"
+            img = putText(img, feedback, [50, 120], fontSize=1.2, color=(0, 0, 255))
+        else:
+            feedback = "Good Posture!"
+            img = putText(img, feedback, [50, 120], fontSize=1.2, color=(0, 255, 0))
+
+    cv2.imshow("Image", img)
+    cv2.waitKey(1)
