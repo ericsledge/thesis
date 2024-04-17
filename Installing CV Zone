@@ -1,0 +1,13 @@
+//Installing CVZone on Rasberry Pi 4 Module B
+
+//Raspberry Pi: Ensure it’s running Raspbian OS.
+//Camera: You can opt for the Raspberry Pi’s native camera module or a compatible USB webcam.
+//Libraries: CVZone and OpenCV are the mainstays for our computer vision tasks.
+//Python: Version 3.6 or later is recommended for compatibility and performance.
+
+//Install Open CV
+sudo apt-get update
+sudo apt-get install libopencv-dev python3-opencv
+
+//CV Zone
+pip3 install cvzone
